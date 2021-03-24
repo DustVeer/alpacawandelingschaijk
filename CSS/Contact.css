@@ -1,0 +1,43 @@
+.form-wrapper {
+    margin-top: 50px;
+    width: 100%;
+    padding: 0 10%;
+    box-sizing: border-box;
+}
+.contact-form {
+    padding: 20px;
+    height: 700px;
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+}
+.mid-form {
+    margin-top: 50px;
+    padding: 0 10%;
+    box-sizing: border-box;
+}
+label {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    margin: 10px 0 0 0;
+
+}
+.form-input {
+    width: 100%;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+}
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    width: 100%;
+    height: 60px;
+    max-width: 100%;
+    max-height: 200px;
+}
+.form-input:hover, textarea:hover {
+    border: 2px black solid;
+    background-color: rgba(0, 0, 0, 0.061);
+}
