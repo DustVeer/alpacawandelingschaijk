@@ -115,7 +115,7 @@ if (isset($_GET["input"]))
                             </div>";
                         }     
                     }
-                    else if (empty($message))
+                    else
                     {
                         echo "<div class='review'><p class='review-content'>Er zijn nog geen reviews geplaatst.</p></div>";
                     }
