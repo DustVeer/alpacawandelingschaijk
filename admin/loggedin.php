@@ -28,7 +28,6 @@ else {$require = "";}
     </header>
     <div class="page-wrapper">
         <?php 
-        echo "Test";
             if ($require == "Corona")
             {
                 require("corona-edit.php");
