@@ -99,7 +99,7 @@ if (isset($_GET["input"]))
                    $row = (New Review)->fetchAll();
                     
 
-                    if (isset($row))
+                    if (isset($row[0]))
                     {
                         
                         for($i = count($row) - 1; $i >= 0; $i--)
