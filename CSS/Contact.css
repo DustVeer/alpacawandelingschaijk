@@ -6,13 +6,12 @@
 }
 .contact-form {
     padding: 20px;
-    height: 700px;
     width: 100%;
     background-color: white;
     box-sizing: border-box;
 }
 .mid-form {
-    margin-top: 50px;
+    margin-top: 40px;
     padding: 0 10%;
     box-sizing: border-box;
 }
@@ -29,15 +28,33 @@ label {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.4rem;
 }
+.form-submit {
+    width: 100%;
+    padding: 30px 20%;
+    box-sizing: border-box;
+    
+}
 textarea {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     width: 100%;
-    height: 60px;
+    height: 175px;
+    min-height: 175px;
+    min-width: 100%;
     max-width: 100%;
-    max-height: 200px;
 }
 .form-input:hover, textarea:hover {
     border: 2px black solid;
     background-color: rgba(0, 0, 0, 0.061);
+}
+input[type=submit] {
+    font-size: 1.4rem;
+    color: rgb(230, 230, 230);
+    background-color: var(--green1);
+    width: 100%;
+    height: 40px;
+}
+input[type=submit]:hover {
+    background-color: rgb(0, 144, 0);
+    border: 2px black solid;
 }

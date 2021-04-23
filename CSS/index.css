@@ -1,0 +1,9 @@
+.page-left {
+    width: 100%;
+    margin-top: 50px;
+}
+.page-left img {
+    width: 33%;
+    box-shadow: 0 0 5px black;
+
+}

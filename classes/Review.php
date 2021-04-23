@@ -6,14 +6,9 @@ class Review
     public $datum;
     public $score;
     public $content;
-    public $pdo;
     //GQ-jWzm37gPdx
 
-    function __construct()
-    {
-        $this->pdo = new PDO("mysql:host=localhost;dbname=ernstandereogen_alpacawandelingschaijk", "ernstandereogen_ernstandereogen", "GQ-jWzm37gPdx");
-    }
-
+    
     function set_naam($i) 
     {
         $this->naam = $i;
@@ -34,9 +29,10 @@ class Review
     {
         $this->content = $i;
     }
-    function get_all()
+    function fetchAll()
     {
-        $sth = $this->pdo->prepare("SELECT * FROM review");
+        require("pdo.php");
+        $sth = $pdo->prepare("SELECT * FROM review");
         $sth->execute();
 
         return $sth->fetchAll();

@@ -5,12 +5,7 @@ class Contact
     public $phone;
     public $email;
     public $question;
-    public $pdo;
     
-    function __construct()
-    {
-        $this->pdo = new PDO("mysql:host=localhost;dbname=ernstandereogen_alpacawandelingschaijk", "ernstandereogen_ernstandereogen", "GQ-jWzm37gPdx");
-    }
     function set_name($i)
     {
         $this->name = $i;
@@ -29,12 +24,12 @@ class Contact
     }
     function add()
     {
-        
-        $parameters = array(':naam'=>$this->name, ':phone'=>$this->phone, ':email'=>$this->email, ':vraag'=>$this->question);
-        $sth = $this->pdo->prepare("INSERT INTO contact_vraag (naam, telefoonnummer, email, vraag) VALUES
-        (:naam, :phone, :email, :vraag)");
+        require("pdo.php");
+        $date = date("Y/m/d");
+        $parameters = array(':naam'=>$this->name, ':datum'=>$date, ':phone'=>$this->phone, ':email'=>$this->email, ':vraag'=>$this->question);
+        $sth = $pdo->prepare("INSERT INTO contact_vraag (naam, datum, telefoonnummer, email, vraag) VALUES
+        (:naam, :datum, :phone, :email, :vraag)");
         $sth->execute($parameters);
-        
     }
 }
 

@@ -8,9 +8,13 @@ if (isset($_GET["input"]))
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="CSS/ReviewsStyle.css">
     <link rel="stylesheet" href="CSS/Style.css">
-    <title>Home</title>
+    <link rel="stylesheet" href="CSS/Stars.css">
+    <title>AlpacaWandelingSchaijk</title>
+    <link rel="icon" href="IMG/Alpaca_Logo.png" type="image/icon type">
+    
 </head>
 <body>
 <?php 
@@ -21,39 +25,77 @@ if (isset($_GET["input"]))
      
     if (isset($newreview))
     {
-        echo "<div class='new-review'>
-        <input value='Back' type='button' onclick=\"window.location.href='reviews.php'\">
+        echo 
+        "<div class='new-review'>
+            <input value='Back' type='button' onclick=\"window.location.href='reviews.php'\">
+            <div class='star-wrapper'>
+                <div class='form-titel'>
+                    <p class='titels'>Review achterlaten</p>
+                    <p style='font-family: Arial, Helvetica, sans-serif;'>* verplichte velden</p>
+                </div>
+                <hr>
+                <form action='actions/review-form.php' method='POST'>
+                    <div class='form-wrapper'>
+                        <label>Naam</label>
+                        <input class='form-input' type='text' name='name'>
+                        <label>E-mail</label>
+                        <input class='form-input' type='email' name='email'>
+                        <div class='form-score'>
+                            <label>Score</label><p class='page-small-text'>1 t/m 5</p>
+                        </div>
+                        <input style='margin-right: 100%;width: 10%;' class='form-input' type='number' name='Score'>
+                        <label>Review</label>
+                        <textarea class='form-input' name='content'></textarea>
+                    </div>
+                    <input style='' type='submit' value='Review verzenden'>
+                </form>
+            </div>
         </div>";
     }
-    
 ?>
     <header>
     <header>
+    <img style="height: 100%; width: 100%;" src="IMG/border.jpg">
+    <img class="small-logo" src="IMG/Alpaca_Logo.png">
         <div class="top-header-content">
             <p class="main-titel">AlpacaWandelingSchaijk</p>
+            <a href="https://www.facebook.com/alpacawandelingschaijk" target="_blank"><img  class="icon" src="IMG/FB.png" ></a>
+            <a href="https://www.instagram.com/alpacawandelingschaijk/" target="_blank"><img style="left: calc(80% + 55px)" class="icon" src="IMG/IG.png" ></a>
         </div>
     </header>
         <div class="content">
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="evenvoorstellen.php">Even Voorstellen</a></li>
+                <li><a href="evenvoorstellen.php">Even voorstellen</a></li>
                 <li><a href="activiteiten.php">Activiteiten</a></li>
                 <li><a href="reviews.php" style="background-color: var(--green1);">Reviews</a></li>
                 <li><a href="contact.php">Contact</a></li>
+                <li><a href="fotos.php">Foto's</a></li>
+                <li><a href="corona-update.php">Corona update</a></li>
             </ul>
         </div>
     </header>
     <div class="page-wrapper">
         <div class="page-flex">
             <div class="filters">
-                <form action="" method="POST">
-                <input type="button" value="Review schrijve" onclick="window.location.href='reviews.php?input=Review-window';">
-                </form>
+                <div class="review-button">
+                    <form action="" method="POST">
+                    <input type="button" value="Review schrijven" onclick="window.location.href='reviews.php';">
+                    </form>
+                </div>
             </div>
             <div class="reviews">
                 <?php 
-                    $review = new Review();
-                    $row = $review->get_all();
+                    try
+                    {
+                        $review = new Review();
+                        $row = $review->fetchAll();
+                    }
+                    catch(PDOException $message)
+                    {
+                        echo "<div class='review'><p class='review-content'>Review system under construction</p></div>";
+                    }
+                    
 
                     if (isset($row[0]))
                     {
@@ -70,11 +112,11 @@ if (isset($_GET["input"]))
                             </div>";
                         }     
                     }
-                    else
+                    else if (empty($message))
                     {
-                        echo "<div class='review'><p class='review-content'>Er zijn nog geen reviews geplaatst.</p></div>";
+                        echo "<div class='review'><p class='review-content'>Review system under construction</p></div>";
+                        //echo "<div class='review'><p class='review-content'>Er zijn nog geen reviews geplaatst.</p></div>";
                     }
-                    
                 ?>
             </div>
         </div>

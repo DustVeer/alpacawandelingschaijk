@@ -3,6 +3,63 @@
     background-color: white;
     flex: 1;
 }
+.review-button {
+    width: 100%;
+    padding: 5%;
+    box-sizing: border-box;
+}
+.form-titel {
+    width: 100%;
+    padding: 10px;
+}
+input[type=button], input[type=submit] {
+    color: rgb(230, 230, 230);
+    font-size: 1rem;
+    background-color: gray;
+    width: 100%;
+    height: 30px;
+    
+}
+input[type=button]:hover, input[type=submit]:hover, 
+input[type=text]:hover, input[type=email]:hover, 
+input[type=number]:hover, textarea:hover{
+    border: 2px black solid;
+}
+input[type=submit] {
+    position: relative; 
+    margin-top: 20px;
+    left: 0; 
+    bottom: 0;
+}
+textarea {
+    border: 0.5px black solid;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 50px;
+}
+label {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    margin: 10px 5px 0 0;
+    width: fit-content;
+    display: inline-block;
+}
+.page-small-text {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+}
+.form-wrapper {
+    width: 100%;
+    padding: 0 10%;
+    box-sizing: border-box;
+}
+.form-input {
+    border: 0.5px black solid;
+    width: 100%;
+    height: 25px;
+}
 .reviews {
     margin-left: 50px;
     height: 800px;
@@ -44,7 +101,6 @@
 }
 .new-review {
     position: absolute;
-    height: 400px;
     width: 40%;
     background-color: rgb(255, 255, 255);
     top: 50%;
@@ -54,7 +110,7 @@
 }
 .dimmer {
     position: absolute;
-    height: 100vh;
+    height: 150%;
     width: 100%;
     background-color: black;
     z-index: 1;
