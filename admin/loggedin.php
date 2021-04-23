@@ -28,7 +28,7 @@ else {$require = "";}
     </header>
     <div class="page-wrapper">
         <?php 
-            echo $_SESSION["admin"];
+        echo "Test";
             if ($require == "Corona")
             {
                 require("corona-edit.php");
