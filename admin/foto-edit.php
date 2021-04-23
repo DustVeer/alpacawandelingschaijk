@@ -16,7 +16,7 @@ $image = new Image();
     <?php 
         $row = $image->fetchAll();
 
-        for ($i = 0; $i < count($row ); $i++)
+        for ($i = 0; $i < count($row); $i++)
         {
             $subImage = substr($row[$i]["image_path"], 16);
             echo "<option value='" .  $subImage . "'>";

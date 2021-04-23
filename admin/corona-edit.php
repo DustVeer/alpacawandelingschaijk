@@ -20,7 +20,16 @@ if (!isset($_SESSION["admin"]))
         <p class="titel">Verwijder van Corona Update</p>
         <form action="todatabase.php" method="POST">
             <label>Titel</label>
-            <input type="text" name="delete-titel">
+            <input list="delete" name="delete-titel">
+                <datalist id="delete">
+                    <?php 
+                        $row = (new Corona)->fetchAll();
+                        for ($i = 0; $i < count($row); $i++)
+                        {
+                            echo "<option value='" .  $row[$i]["titel"] . "'>";
+                        }
+                    ?>
+                </datalist>
             <input value="Verwijder" type="submit">
             </form>
     </div>

@@ -13,6 +13,6 @@ else if (isset($_POST["delete-titel"]))
     $corona->delete_corona();
 }
 
-header("Location: login.php");
+header("Location: loggedin.php?require=Corona");
 
 ?>

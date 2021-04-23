@@ -37,17 +37,27 @@ if (isset($_GET["input"]))
                 <form action='actions/review-form.php' method='POST'>
                     <div class='form-wrapper'>
                         <label>Naam</label>
-                        <input class='form-input' type='text' name='name'>
+                        <input class='form-input' type='text' name='name' required>
                         <label>E-mail</label>
-                        <input class='form-input' type='email' name='email'>
-                        <div class='form-score'>
-                            <label>Score</label><p class='page-small-text'>1 t/m 5</p>
-                        </div>
-                        <input style='margin-right: 100%;width: 10%;' class='form-input' type='number' name='Score'>
+                        <input class='form-input' type='email' name='email' required>
+                        <label>Score</label>
+                            <div class='rate'>
+                                <input type='radio' id='star5' name='rate' value='5' />
+                                <label for='star5' title='text'>5 stars</label>
+                                <input type='radio' id='star4' name='rate' value='4' />
+                                <label for='star4' title='text'>4 stars</label>
+                                <input type='radio' id='star3' name='rate' value='3' />
+                                <label for='star3' title='text'>3 stars</label>
+                                <input type='radio' id='star2' name='rate' value='2' />
+                                <label for='star2' title='text'>2 stars</label>
+                                <input type='radio' id='star1' name='rate' value='1' />
+                                <label for='star1' title='text'>1 star</label>
+                            </div>
+                        
                         <label>Review</label>
                         <textarea class='form-input' name='content'></textarea>
                     </div>
-                    <input style='' type='submit' value='Review verzenden'>
+                    <input type='submit' value='Review verzenden'>
                 </form>
             </div>
         </div>";
@@ -80,26 +90,19 @@ if (isset($_GET["input"]))
             <div class="filters">
                 <div class="review-button">
                     <form action="" method="POST">
-                    <input type="button" value="Review schrijven" onclick="window.location.href='reviews.php';">
+                    <input type="button" value="Review schrijven" onclick="window.location.href='reviews.php?input=newreview';" >
                     </form>
                 </div>
             </div>
             <div class="reviews">
                 <?php 
-                    try
-                    {
-                        $review = new Review();
-                        $row = $review->fetchAll();
-                    }
-                    catch(PDOException $message)
-                    {
-                        echo "<div class='review'><p class='review-content'>Review system under construction</p></div>";
-                    }
+                   $row = (New Review)->fetchAll();
                     
 
-                    if (isset($row[0]))
+                    if (isset($row))
                     {
-                        for($i = 0; $i< count($row); $i++)
+                        
+                        for($i = count($row) - 1; $i >= 0; $i--)
                         {
                             $date = date("d-m-Y", strtotime($row[$i]["datum"]));
                             echo "<div class='review'>
@@ -114,8 +117,7 @@ if (isset($_GET["input"]))
                     }
                     else if (empty($message))
                     {
-                        echo "<div class='review'><p class='review-content'>Review system under construction</p></div>";
-                        //echo "<div class='review'><p class='review-content'>Er zijn nog geen reviews geplaatst.</p></div>";
+                        echo "<div class='review'><p class='review-content'>Er zijn nog geen reviews geplaatst.</p></div>";
                     }
                 ?>
             </div>

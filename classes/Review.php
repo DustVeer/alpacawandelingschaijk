@@ -6,8 +6,6 @@ class Review
     public $datum;
     public $score;
     public $content;
-    //GQ-jWzm37gPdx
-
     
     function set_naam($i) 
     {
@@ -28,6 +26,15 @@ class Review
     function set_content($i) 
     {
         $this->content = $i;
+    }
+    function add()
+    {
+        require("pdo.php");
+        $date = date("Y/m/d");
+        $parameters = array(':naam'=>$this->naam, ':email'=>$this->email, ':datum'=>$date, ':score'=>$this->score, ':content'=>$this->content);
+        $sth = $pdo->prepare("INSERT INTO review (naam, email, datum, score, content) VALUES (:naam, :email, :datum, :score, :content)");
+        $sth->execute($parameters);
+       
     }
     function fetchAll()
     {
