@@ -72,9 +72,9 @@ else { $succes = ""; }
                     <!-- RADIOS -->
                     <div class="radios">
                         <label>Reservering:</label>
-                        <input name="Reservation" value="Reservering" type="radio" onclick="DisplayRes(1)">
+                        <input class="radio" name="Reservation" value="Reservering" type="radio" onclick="DisplayRes(1)">
                         <label>Vraag:</label>
-                        <input name="Reservation" value="Vraag" type="radio" onclick="DisplayRes(0)" checked>
+                        <input class="radio"  name="Reservation" value="Vraag" type="radio" onclick="DisplayRes(0)" checked>
                     </div>
 
                     <!-- NAAM -->
