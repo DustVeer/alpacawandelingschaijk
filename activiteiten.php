@@ -33,7 +33,7 @@
         <div class="page-left">
             <p class="titels">Activiteiten:</p><hr></br>
             <p class="page-text">
-                Wij wandelen in het weekend, de wandeling begint om 11:00. 
+                Wij wandelen in het weekend, de wandeling begint om 10:00. 
                 Wij wandelen eenmaal per dag. Door de week wandelen we op aanvraag. 
                 We starten op de Lage Baan en rijden daarna naar het bos om te wandelen. 
                 Bij terugkomst mag u de alpaca’s nog hun welverdiende wortel geven en kunt u nagenieten met een kopje koffie of thee. 
