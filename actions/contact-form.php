@@ -10,7 +10,6 @@ if (strlen($_POST["name"]) >= 45)
 }
 else 
 {
-    echo $_POST["Reservation"]; 
     if ($_POST["Reservation"] == "Reservering")
     {
         $reservering->set_name($_POST["name"]);
@@ -34,10 +33,6 @@ else
         $vraag->set_email($_POST["email"]);
         $vraag->set_question($_POST["question"]);
 
-        echo $_POST["name"];
-        echo $_POST["phone_vraag"];
-        echo $_POST["email"];
-        echo $_POST["question"];
 
         $vraag->add();
 
