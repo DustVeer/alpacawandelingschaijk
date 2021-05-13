@@ -22,7 +22,7 @@ else
         $reservering->add();
 
         mail("dveerdonk@gmail.com", "RESERVERING Naam: " . $_POST["name"] . " Email: " . $_POST["email"], 
-        "Datum wandeling: " . $_POST["date"] . "\r\n Aantal personen: " . $_POST["number_people"] . "\r\n Opmerkingen: " . $_POST["remark"], "Form: info@alpacawandelingschaijk.nl");
+        "Datum wandeling: " . $_POST["date"] . "\n Aantal personen: " . $_POST["number_people"] . "\n Opmerkingen: " . $_POST["remark"], "Form: info@alpacawandelingschaijk.nl");
 
         header("Location: ../contact.php?succes=succes_res");
     }
