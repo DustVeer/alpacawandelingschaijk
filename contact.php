@@ -55,6 +55,10 @@ else { $succes = ""; }
             {
                 echo "<p style='font-size: 1.5rem; margin-top: 20px; color: green;' class='page-text'>Uw bericht is met succes verstuurd.</p>";
             }
+            else if ($succes == "succes_res")
+            {
+                echo "<p style='font-size: 1.5rem; margin-top: 20px; color: green;' class='page-text'>Let op, uw reservering is pas definitief als wij deze bevestigd hebben per e-mail.</p>";
+            }
         ?>
         <div class="form-wrapper">
             <div class="contact-form">

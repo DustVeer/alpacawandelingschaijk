@@ -24,7 +24,7 @@ else
         mail("dveerdonk@gmail.com", "RESERVERING Naam: " . $_POST["name"] . " Email: " . $_POST["email"], 
         "Datum wandeling: " . $_POST["date"] . "\r\n Aantal personen: " . $_POST["number_people"] . "\r\n Opmerkingen: " . $_POST["remark"], "Form: info@alpacawandelingschaijk.nl");
 
-        header("Location: ../contact.php?succes=succes");
+        header("Location: ../contact.php?succes=succes_res");
     }
     else if ($_POST["Reservation"] == "Vraag")
     {
