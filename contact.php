@@ -11,6 +11,7 @@ else { $succes = ""; }
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src='https://www.google.com/recaptcha/api.js'></script> 
     <link rel="stylesheet" href="CSS/Contact.css">
     <link rel="stylesheet" href="CSS/Style.css">
     <title>AlpacaWandelingSchaijk</title>
@@ -112,6 +113,9 @@ else { $succes = ""; }
                     <!-- OPMERKINGEN -->
                     <label class="reservering">Opmerkingen</label> <p class="reservering" style='font-family: Arial, Helvetica, sans-serif;'>Maximaal 5000 karakters</p>
                     <textarea class="form-questions reservering" name="remark"></textarea>
+                    
+
+                    <div class="g-recaptcha" style="margin-top: 10px;" data-sitekey="6LcePAATAAAAAGPRWgx90814DTjgt5sXnNbV5WaW"></div>
 
                     <!-- SUBMIT -->
                     <div class="form-submit">
