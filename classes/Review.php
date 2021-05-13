@@ -7,32 +7,31 @@ class Review
     public $score;
     public $content;
     
-    function set_naam($i) 
+    function set_naam($value) 
     {
-        $this->naam = $i;
+        $this->naam = $value;
     }
-    function set_email($i) 
+    function set_email($value) 
     {
-        $this->email = $i;
+        $this->email = $value;
     }
-    function set_datum($i) 
+    function set_datum($value) 
     {
-        $this->datum = $i;
+        $this->datum = $value;
     }
-    function set_score($i) 
+    function set_score($value) 
     {
-        $this->score = $i;
+        $this->score = $value;
     }
-    function set_content($i) 
+    function set_content($value) 
     {
-        $this->content = $i;
+        $this->content = $value;
     }
     function add()
     {
         require("pdo.php");
-        $date = date("Y/m/d");
-        $parameters = array(':naam'=>$this->naam, ':email'=>$this->email, ':datum'=>$date, ':score'=>$this->score, ':content'=>$this->content);
-        $sth = $pdo->prepare("INSERT INTO review (naam, email, datum, score, content) VALUES (:naam, :email, :datum, :score, :content)");
+        $parameters = array(':naam'=>$this->naam, ':email'=>$this->email, ':score'=>$this->score, ':content'=>$this->content);
+        $sth = $pdo->prepare("INSERT INTO review (naam, email, score, content) VALUES (:naam, :email, :score, :content)");
         $sth->execute($parameters);
        
     }

@@ -1,5 +1,5 @@
 <?php 
-if (true)
+if (false)
 {
     define("dbname", "ernstandereogen_alpacawandelingschaijk");
     define("dbuser", "ernstandereogen_ernstandereogen");

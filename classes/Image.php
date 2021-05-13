@@ -10,15 +10,14 @@ class Image
         $this->pdo = $pdo;
     }
 
-    function set_image_path($i)
+    function set_image_path($value)
     {
-        $this->image_path = $i;
+        $this->image_path = $value;
     }
     function add()
     {
-        $date = date("Y/m/d");
-        $parameters = array(':image_path'=>$this->image_path, ':datum'=>$date);
-        $sth = $this->pdo->prepare("INSERT INTO image (image_path, datum) VALUES (:image_path, :datum)");
+        $parameters = array(':image_path'=>$this->image_path);
+        $sth = $this->pdo->prepare("INSERT INTO image (image_path) VALUES (:image_path)");
         $sth->execute($parameters);  
     }
     function delete()

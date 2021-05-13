@@ -5,20 +5,20 @@ class Corona
     public $text;
     public $titel;
     
-    function set_titel($i)
+    function set_titel($value)
     {
-        $this->titel = $i;
+        $this->titel = $value;
     }
-    function set_text($i)
+    function set_text($value)
     {
-        $this->text = $i;
+        $this->text = $value;
     }
     function add_text()
     {
         require("pdo.php");
-        $date = date("Y/m/d");
-        $parameters = array(':titel'=>$this->titel, ':text'=>$this->text, ':datum'=>$date);
-        $sth = $pdo->prepare("INSERT INTO corona (titel, text, datum) VALUES (:titel, :text, :datum)");
+        
+        $parameters = array(':titel'=>$this->titel, ':text'=>$this->text);
+        $sth = $pdo->prepare("INSERT INTO corona (titel, text) VALUES (:titel, :text)");
         $sth->execute($parameters);
     }
     function delete_corona()
