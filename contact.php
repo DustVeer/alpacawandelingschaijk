@@ -11,7 +11,7 @@ else { $succes = ""; }
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src='https://www.google.com/recaptcha/api.js'></script> 
+    <!-- s<script src='https://www.google.com/recaptcha/api.js'></script>  -->
     <link rel="stylesheet" href="CSS/Contact.css">
     <link rel="stylesheet" href="CSS/Style.css">
     <title>AlpacaWandelingSchaijk</title>
