@@ -21,7 +21,7 @@ else
 
         $reservering->add();
 
-        mail("dveerdonk@gmail.com", "RESERVERING Naam: " . $_POST["name"] . " Email: " . $_POST["email"], 
+        mail("info@alpacawandelingschaijk.nl", "RESERVERING Naam: " . $_POST["name"] . " Email: " . $_POST["email"], 
         "Datum wandeling: " . $_POST["date"] . "\n Aantal personen: " . $_POST["number_people"] . "\n Opmerkingen: " . $_POST["remark"], "Form: info@alpacawandelingschaijk.nl");
 
         header("Location: ../contact.php?succes=succes_res");
@@ -36,7 +36,7 @@ else
 
         $vraag->add();
 
-        mail("dveerdonk@gmail.com", "VRAAG Naam: " . $_POST["name"] . " Email: " . $_POST["email"], $_POST["question"], "Form: info@alpacawandelingschaijk.nl");
+        mail("info@alpacawandelingschaijk.nl", "VRAAG Naam: " . $_POST["name"] . " Email: " . $_POST["email"], $_POST["question"], "Form: info@alpacawandelingschaijk.nl");
 
         header("Location: ../contact.php?succes=succes");
     }
