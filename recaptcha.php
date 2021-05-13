@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Document</title>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script>
-        function onSubmit(token) {
-          document.getElementById("demo-form").submit();
-        }
-    </script>
-</head>
-<body>
-    <form action="" method="POST">
-        <input type="text" name="text">
-        <input type="email" name="email">
-            <button class="g-recaptcha" 
-            data-sitekey="reCAPTCHA_site_key" 
-            data-callback='onSubmit' 
-            data-action='submit'>Submit</button>
-        <input type="submit">
+  <head>
+    <title>TEST</title>
+  </head>
+ 
+  <body>
+ 
+    <form action="" method="post">
+ 
+      <label for="name">Name:</label>
+      <input name="name" required><br />
+ 
+      <label for="email">Email:</label>
+      <input name="email" type="email" required><br />
+ 
+      <div class="g-recaptcha" data-sitekey="6LcePAATAAAAAGPRWgx90814DTjgt5sXnNbV5WaW"></div>
+ 
+      <input type="submit" value="Submit" />
+ 
     </form>
-</body>
+ 
+    <!--js-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+ 
+  </body>
 </html>
-<?php 
-
-
-
-?>
