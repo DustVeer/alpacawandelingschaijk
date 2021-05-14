@@ -36,7 +36,7 @@ else
 
         $vraag->add();
 
-        mail("info@alpacawandelingschaijk.nl", "VRAAG Naam: " . $_POST["name"] . " Email: " . $_POST["email"], "Telefoon nummer: " . $_POST["phone_reservering"] . "\n Vraag: " .  $_POST["question"], "Form: info@alpacawandelingschaijk.nl");
+        mail("info@alpacawandelingschaijk.nl", "VRAAG Naam: " . $_POST["name"] . " Email: " . $_POST["email"], "Telefoon nummer: " . $_POST["phone_vraag"] . "\n Vraag: " .  $_POST["question"], "Form: info@alpacawandelingschaijk.nl");
 
         header("Location: ../contact.php?succes=succes");
     }
