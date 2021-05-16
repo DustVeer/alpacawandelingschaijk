@@ -73,9 +73,9 @@ else { $succes = ""; }
                     <!-- RADIOS -->
                     <div class="radios">
                         <label>Reservering:</label>
-                        <input class="radio" name="Reservation" value="Reservering" type="radio" onclick="DisplayRes(1)">
+                        <input class="radio" name="Reservation" value="Reservering" type="radio" onclick="DisplayRes(1)" checked>
                         <label>Vraag:</label>
-                        <input class="radio"  name="Reservation" value="Vraag" type="radio" onclick="DisplayRes(0)" checked>
+                        <input class="radio"  name="Reservation" value="Vraag" type="radio" onclick="DisplayRes(0)">
                     </div>
 
                     <!-- NAAM -->
@@ -88,10 +88,11 @@ else { $succes = ""; }
                     <input class="form-input" type="text" name="name" required>
 
                     <!-- TELEFOON NUMMERS -->
-                    <label class="vraag">Telefoon nummer</label>
+                    <label class="vraag">Telefoon nummer</label> 
                     <input class="form-input vraag"  type="number" name="phone_vraag">
 
-                    <label class="reservering">Telefoon nummer *</label>
+                    <label class="reservering">Telefoon nummer *</label><?php if ($error == "phone") 
+                    { echo "<p class='page-text' style='color:red;'>Voer een telefoon nummer in</p>"; } ?> 
                     <input class="form-input reservering"  type="number" name="phone_reservering">
 
                     <!-- E-MAIL -->
@@ -103,11 +104,13 @@ else { $succes = ""; }
                     <textarea class="form-questions vraag" name="question"></textarea>
 
                     <!-- DATUM -->
-                    <label class="reservering">Datum van de wandeling *</label>
+                    <label class="reservering">Datum van de wandeling *</label><?php if ($error == "date") 
+                    { echo "<p class='page-text' style='color:red;'>Voer een datum in</p>"; } ?>
                     <input type="date" name="date">
 
                     <!-- AANTAL PERSONEN -->
-                    <label class="reservering">Aantal personen *</label>
+                    <label class="reservering">Aantal personen *</label><?php if ($error == "people") 
+                    { echo "<p class='page-text' style='color:red;'>Voer het aantal personen in</p>"; } ?>
                     <input style="width: 10%;" class="form-input reservering"  type="number" name="number_people" max="20" min="1">
                     
                     <!-- OPMERKINGEN -->
@@ -115,7 +118,7 @@ else { $succes = ""; }
                     <textarea class="form-questions reservering" name="remark"></textarea>
                     
 
-                    <!-- <div class="g-recaptcha" style="margin-top: 10px;" data-sitekey="6LcePAATAAAAAGPRWgx90814DTjgt5sXnNbV5WaW"></div> -->
+                    
 
                     <!-- SUBMIT -->
                     <div class="form-submit">
@@ -154,7 +157,7 @@ else { $succes = ""; }
                             }
                         }
                     }
-                    DisplayRes(0)
+                    DisplayRes(1)
                     
                     </script>
                     </form>
