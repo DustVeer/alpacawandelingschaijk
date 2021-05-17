@@ -17,13 +17,8 @@ else
     {
         $reservering->set_name($_POST["name"]);
 
-        //Email
-        if (empty($_POST["email"])) {
-            $check = 1;
-            header("Location: ../contact.php?error=email");
-        }
-        else { $reservering->set_email($_POST["email"]); }
 
+        $reservering->set_email($_POST["email"]); 
         //Phone
         if (empty($_POST["phone_reservering"])) {
             $check = 1;
@@ -43,16 +38,19 @@ else
             $check = 1;
             header("Location: ../contact.php?error=people");
         }
-        else { $reservering->set_wandel_datum($_POST["number_people"]); }
+        else { $reservering->set_aantal_personen($_POST["number_people"]); }
 
         $reservering->set_remark($_POST["remark"]);
         if ($check == 0)
         {
+            
             $reservering->add();
-            mail("info@alpacawandelingschaijk.nl", "RESERVERING Naam: " . $_POST["name"] . " Email: " . $_POST["email"], "Telefoon nummer: " . $_POST["phone_reservering"] .   
-            "\nDatum wandeling: " . $_POST["date"] . "\nAantal personen: " . $_POST["number_people"] . "\nOpmerkingen: " . $_POST["remark"], "Form: info@alpacawandelingschaijk.nl");
+
+            mail("info@alpacawandelingschaijk.nl", "RESERVERING Naam: " . $_POST["name"] . " Email: " . $_POST["email"], "Telefoon nummer: " . $_POST["phone_reservering"] .  "\nDatum wandeling: " . $_POST["date"] . "\nAantal personen: " . $_POST["number_people"] . "\nOpmerkingen: " . $_POST["remark"], "Form: info@alpacawandelingschaijk.nl");
 
             header("Location: ../contact.php?succes=succes_res");
+
+            
         }
         
     }
@@ -73,7 +71,8 @@ else
         {
             $vraag->add();
 
-            mail("info@alpacawandelingschaijk.nl", "VRAAG Naam: " . $_POST["name"] . " Email: " . $_POST["email"], "Telefoon nummer: " . $_POST["phone_vraag"] . "\n Vraag: " .  $_POST["question"], "Form: info@alpacawandelingschaijk.nl");
+            mail("info@alpacawandelingschaijk.nl", "VRAAG Naam: " . $_POST["name"] . " Email: " . $_POST["email"], 
+            "Telefoon nummer: " . $_POST["phone_vraag"] . "\nVraag: " .  $_POST["question"], "Form: info@alpacawandelingschaijk.nl");
 
             header("Location: ../contact.php?succes=succes");
         }

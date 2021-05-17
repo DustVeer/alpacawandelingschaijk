@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if (isset($_GET["error"]))
-{ $error = $_GET["error"]; }
+{   $error = $_GET["error"]; }
 else { $error = ""; }
 
 if (isset($_GET["succes"]))
@@ -73,13 +73,14 @@ else { $succes = ""; }
                     <!-- RADIOS -->
                     <div class="radios">
                         <label>Reservering:</label>
-                        <input class="radio" name="Reservation" value="Reservering" type="radio" onclick="DisplayRes(1)" checked>
+                        <input class="radio" name="Reservation" value="Reservering" type="radio" onclick="DisplayRes(1)" <?php if ($error == "vraag") {} else {echo "checked";} ?>>
                         <label>Vraag:</label>
-                        <input class="radio"  name="Reservation" value="Vraag" type="radio" onclick="DisplayRes(0)">
+                        <input class="radio"  name="Reservation" value="Vraag" type="radio" onclick="DisplayRes(0)" <?php if ($error == "vraag") {echo "checked";} ?>>
                     </div>
 
                     <!-- NAAM -->
                     <label>Naam *</label><?php
+                    
                     if ($error == "name")
                     {
                         echo "<p class='page-text' style='color:red;'>Naam is te lang</p>";
@@ -101,6 +102,8 @@ else { $succes = ""; }
 
                     <!-- VRAAG -->
                     <label class="vraag">Vraag *</label> <p class="vraag" style='font-family: Arial, Helvetica, sans-serif;'>Maximaal 5000 karakters</p>
+                    <?php if ($error == "vraag") 
+                    { echo "<p class='page-text' style='color:red;'>Voer een vraag in</p>"; } ?>
                     <textarea class="form-questions vraag" name="question"></textarea>
 
                     <!-- DATUM -->
@@ -126,7 +129,10 @@ else { $succes = ""; }
                     </div>
 
                     <script>
-                     
+                    function ScrollPos(n)
+                    {
+                        window.scrollTo(0, n);
+                    }
                     function DisplayRes(n)
                     {
                         date = document.getElementsByName("date");
@@ -157,8 +163,8 @@ else { $succes = ""; }
                             }
                         }
                     }
-                    DisplayRes(1)
-                    
+                    DisplayRes(<?php if ($error == "vraag") {echo 0;} else {echo 1;} ?>)
+                    <?php if ($error != "") {echo "ScrollPos(1000)";} ?>
                     </script>
                     </form>
                 </div>

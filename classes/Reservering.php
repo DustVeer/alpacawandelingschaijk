@@ -15,7 +15,6 @@ class Reservering
     }
     function set_phone($value)
     {
-        if ($value == "") {$value = 0;}
         $this->phone = $value;
     }
     function set_email($value)
@@ -47,6 +46,7 @@ class Reservering
         (:naam, :email, :phone, :wandel_datum, :aantal_personen, :remark)");
 
         $sth->execute($parameters);
+
     }
 }
 
