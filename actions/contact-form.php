@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
 require("../classes/Vraag.php");
 require("../classes/Reservering.php");
 
@@ -22,25 +22,48 @@ else
         //Phone
         if (empty($_POST["phone_reservering"])) {
             $check = 1;
-            header("Location: ../contact.php?error=phone");
         }
         else { $reservering->set_phone($_POST["phone_reservering"]); }
 
         //Date
         if (empty($_POST["date"])) {
-            $check = 1;
-            header("Location: ../contact.php?error=date");
+            $check = 2;
         }
         else { $reservering->set_wandel_datum($_POST["date"]); }
         
         //People
         if (empty($_POST["number_people"])) {
-            $check = 1;
-            header("Location: ../contact.php?error=people");
+            $check = 3;
         }
         else { $reservering->set_aantal_personen($_POST["number_people"]); }
 
+        // set_Session_reservering
+        if ($check > 0)
+        {
+            $_SESSION["name"] = $_POST["name"];
+            $_SESSION["email"] = $_POST["email"];
+            $_SESSION["phone_reservering"] = $_POST["phone_reservering"];
+            $_SESSION["date"] = $_POST["date"];
+            $_SESSION["number_people"] = $_POST["number_people"];
+            $_SESSION["remark"] = $_POST["remark"];
+        }
+
         $reservering->set_remark($_POST["remark"]);
+
+        switch ($check)
+        {
+            case 1: 
+                header("Location: ../contact.php?error=phone");
+                break;
+            case 2:
+                header("Location: ../contact.php?error=date");
+                break;
+            case 3:
+                header("Location: ../contact.php?error=people");
+            break;
+
+        }
+
         if ($check == 0)
         {
             
@@ -63,6 +86,12 @@ else
         //Vraag
         if (empty($_POST["question"])) {
             $check = 1;
+
+            $_SESSION["name"] = $_POST["name"];
+            $_SESSION["phone_vraag"] = $_POST["phone_vraag"];
+            $_SESSION["email"] = $_POST["email"];
+            $_SESSION["question"] = $_POST["question"];
+
             header("Location: ../contact.php?error=vraag");
         }
         else { $vraag->set_question($_POST["question"]); }

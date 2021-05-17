@@ -25,7 +25,6 @@ class Vraag
     function add()
     {
         require("pdo.php");
-        $date = date("Y/m/d");
         $parameters = array(':naam'=>$this->name, ':phone'=>$this->phone, ':email'=>$this->email, ':vraag'=>$this->question);
         $sth = $pdo->prepare("INSERT INTO contact_vraag (naam, telefoonnummer, email, vraag) VALUES
         (:naam, :phone, :email, :vraag)");
