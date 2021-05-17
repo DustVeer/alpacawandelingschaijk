@@ -21,7 +21,7 @@ else { $succes = null; }
     <header>
         <header>
             <img style="height: 100%; width: 100%;" src="IMG/border.jpg">
-            <img class="small-logo" src="IMG/Alpaca_Logo.png">
+            <a href="index.php"><img class="small-logo" src="IMG/Alpaca_Logo.png"></a>
             <div class="top-header-content">
                 <p class="main-titel">AlpacaWandelingSchaijk</p>
                 <a href="https://www.facebook.com/alpacawandelingschaijk" target="_blank"><img  class="icon" src="IMG/FB.png" ></a>
@@ -123,8 +123,8 @@ else { $succes = null; }
                     
                     <!-- OPMERKINGEN -->
                     <label class="reservering">Opmerkingen</label> <p class="reservering" style='font-family: Arial, Helvetica, sans-serif;'>Maximaal 5000 karakters</p>
-                    <textarea class="form-questions reservering" value="<?php  
-                    if (isset($_SESSION["remark"]) && isset($error)) {echo $_SESSION["remark"];} ?>" name="remark"></textarea>
+                    <textarea class="form-questions reservering" name="remark"><?php  
+                    if (isset($_SESSION["remark"]) && isset($error)) {echo $_SESSION["remark"];} ?></textarea>
                     
 
                     

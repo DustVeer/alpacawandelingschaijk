@@ -15,7 +15,7 @@ $row = (new Corona)->fetchAll();
     <header>
         <header>
             <img style="height: 100%; width: 100%;" src="IMG/border.jpg">
-            <img class="small-logo" src="IMG/Alpaca_Logo.png">
+            <a href="index.php"><img class="small-logo" src="IMG/Alpaca_Logo.png"></a>
             <div class="top-header-content">
                 <p class="main-titel">AlpacaWandelingSchaijk</p>
                 <a href="https://www.facebook.com/alpacawandelingschaijk" target="_blank"><img  class="icon" src="IMG/FB.png" ></a>
