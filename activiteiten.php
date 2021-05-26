@@ -24,6 +24,7 @@
                 <li><a href="activiteiten.php" style="background-color: var(--green1);">Activiteiten</a></li>
                 <li><a href="reviews.php">Reviews</a></li>
                 <li><a href="contact.php">Contact</a></li>
+                <li><a href="reservering.php">Reservering</a></li>
                 <li><a href="fotos.php">Foto's</a></li>
                 <li><a href="corona-update.php">Corona update</a></li>
             </ul>
@@ -41,8 +42,8 @@
             </p></br></br>
             <p class="titels">Tarieven:</p><hr></br>
             <p class="page-text">
-                Een privé-wandeling kost 100 euro voor 4 personen, elke volgende persoon kost 25 euro. 
-                De maximale groepsgrootte is 8 personen. U wandelt dan met uw eigen groep. 
+                Een privé-wandeling kost 150 euro op basis van 6 personen, voor elke volgende persoon betaalt u 25 euro. De maximale groepsgrootte is 8 personen. 
+                U wandelt dan met uw eigen groep. 
                 U kunt ook een gewone wandeling boeken, dat kost 25 euro per persoon. 
                 Ook hier geldt een groepsgrootte van 8 personen en loopt u dus samen met andere mensen.
             </p></br></br>
