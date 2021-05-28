@@ -41,7 +41,7 @@ else
         else { $reservering->set_wandel_datum($_POST["date"]); }
         
         //People
-        if (empty($_POST["number_people"]) ||  gettype($_POST["number_people"]) != "integer") {
+        if (empty($_POST["number_people"]) || !is_numeric($_POST["number_people"])) {
             $check = 3;
         }
         else { $reservering->set_aantal_personen($_POST["number_people"]); }
