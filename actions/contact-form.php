@@ -13,12 +13,21 @@ if (strlen($_POST["name"]) >= 45)
 }
 else 
 {
-    if ($_POST["Reservation"] == "Reservering")
+    if ($_POST["Reservation"] == "Reservering" || isset($_POST["name_res"]))
     {
-        $reservering->set_name($_POST["name"]);
-
+        if (isset($_POST["name_res"]))
+        {
+            $check = 4;
+            $reservering->set_name($_POST["name_res"]);
+        }
+        else {$reservering->set_name($_POST["name"]);}
+        
 
         $reservering->set_email($_POST["email"]); 
+
+
+       
+
         //Phone
         if (empty($_POST["phone_reservering"])) {
             $check = 1;
@@ -26,13 +35,13 @@ else
         else { $reservering->set_phone($_POST["phone_reservering"]); }
 
         //Date
-        if (empty($_POST["date"])) {
+        if (empty($_POST["date"]) || !strtotime($_POST["date"])) {
             $check = 2;
         }
         else { $reservering->set_wandel_datum($_POST["date"]); }
         
         //People
-        if (empty($_POST["number_people"])) {
+        if (empty($_POST["number_people"]) ||  gettype($_POST["number_people"]) != "integer") {
             $check = 3;
         }
         else { $reservering->set_aantal_personen($_POST["number_people"]); }
@@ -60,7 +69,13 @@ else
                 break;
             case 3:
                 header("Location: ../contact.php?error=people");
+                break;
+            case 4:
+                $reservering->add();
+                mail("info@alpacawandelingschaijk.nl", "RESERVERING Naam: " . $_POST["name_res"] . " Email: " . $_POST["email"], "Telefoon nummer: " . $_POST["phone_reservering"] .  "\nDatum wandeling: " . $_POST["date"] . "\nAantal personen: " . $_POST["number_people"] . "\nOpmerkingen: " . $_POST["remark"], "Form: info@alpacawandelingschaijk.nl");
+                header("Location: ../contact.php?succes=succes_res");
             break;
+            
 
         }
 
