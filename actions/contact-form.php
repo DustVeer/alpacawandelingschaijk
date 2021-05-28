@@ -29,7 +29,7 @@ else
        
 
         //Phone
-        if (empty($_POST["phone_reservering"])) {
+        if (empty($_POST["phone_reservering"]) || !is_numeric($_POST["phone_reservering"])) {
             $check = 1;
         }
         else { $reservering->set_phone($_POST["phone_reservering"]); }
@@ -45,7 +45,7 @@ else
          || $_POST["number_people"] > 20 || $_POST["number_people"] < 1) {
             $check = 3;
         }
-        else { $reservering->set_aantal_personen($_POST["number_people"]); }
+        else { $reservering->set_aantal_personen(floor($_POST["number_people"])); }
 
         // set_Session_reservering
         if ($check > 0)
