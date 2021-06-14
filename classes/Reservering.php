@@ -8,13 +8,17 @@ class Reservering
     public $wandel_datum;
     public $aantal_personen;
     public $bevestigd; 
+    public $datum;
     public $pdo;
     
     function __construct()
     {
         require("pdo.php");
         $this->pdo = $pdo;
+        $this->update_capaciteit();
     }
+
+    
     
     function set_name($value)
     {
@@ -44,7 +48,17 @@ class Reservering
     {
         $this->bevestigd = $value;
     }
+    function set_datum($value)
+    {
+        $this->datum = $value;
+    }
     
+    private function update_capaciteit()
+    {
+        $sth = $this->pdo->prepare("UPDATE capaciteit SET aantal_reserveringen = (SELECT SUM(contact_reservering.aantal_personen) FROM contact_reservering WHERE contact_reservering.wandel_datum = capaciteit.datum AND bevestigd = 1), aantal_beschikbaar = 8 - aantal_reserveringen");
+        $sth->execute();
+    }
+
     function fetch_wandel_datum()
     {
         
@@ -53,10 +67,11 @@ class Reservering
 
         return $sth->fetchAll();
     }
-    function fetch_schema()
+    function fetchALL_capaciteit()
     {
         
-        $sth = $this->pdo->prepare("SELECT extra_datum FROM reserverings_schema WHERE bevestigd = 1");
+        
+        $sth = $this->pdo->prepare("SELECT * FROM capaciteit ORDER BY datum");
         $sth->execute();
 
         return $sth->fetchAll();
@@ -91,22 +106,62 @@ class Reservering
         $parameters = array(':naam'=>$this->name ,':bevestigd'=>$this->bevestigd, ':wandel_datum'=>$date);
         $sth = $this->pdo->prepare("UPDATE contact_reservering SET bevestigd = :bevestigd WHERE naam = :naam AND wandel_datum = :wandel_datum");
         $sth->execute($parameters);
+
+
+        
+
         //SELECT *, COUNT(wandel_datum) FROM `contact_reservering` GROUP BY wandel_datum HAVING COUNT(wandel_datum) > 1
+    }
+    function delete_dummy()
+    {
+        $date = date("Y-m-d", strtotime($this->wandel_datum));
+
+        $parameters = array(':wandel_datum'=>$date);
+        $sth = $this->pdo->prepare("DELETE FROM contact_reservering WHERE wandel_datum = :wandel_datum");
+        $sth->execute($parameters);
+
+        $this->update_capaciteit();
+    }
+    function add_datum()
+    {
+        $date = date("Y-m-d", strtotime($this->datum));
+
+        $parameters = array(':datum'=>$date);
+        $sth = $this->pdo->prepare("INSERT INTO capaciteit (datum) VALUEs (:datum)");
+        $sth->execute($parameters);
+
+    }
+    function add_dummy()
+    {
+        $date = date("Y-m-d", strtotime($this->wandel_datum));
+
+        $parameters = array(':naam'=>"Dummy", ':email'=>"Dummy@dummy.dm", ':phone'=>"06Dummy", ':wandel_datum'=>$date, 
+        ':aantal_personen'=>$this->aantal_personen, ':remark'=>"This is a Dummy", ':bevestigd'=>1);
+         
+        $sth = $this->pdo->prepare("INSERT INTO contact_reservering (naam, email, telefoonnummer, wandel_datum, aantal_personen, opmerking, bevestigd) VALUES
+        (:naam, :email, :phone, :wandel_datum, :aantal_personen, :remark, :bevestigd)");
+
+        $sth->execute($parameters);
+
+        $this->update_capaciteit();
     }
     function add()
     {
         
         $date = date("Y-m-d", strtotime($this->wandel_datum));
+        $bevestigd = (isset($this->bevestigd)) ? 1 : 0;
 
         $parameters = array(':naam'=>$this->name, ':email'=>$this->email, ':phone'=>$this->phone, ':wandel_datum'=>$date, 
-        ':aantal_personen'=>$this->aantal_personen, ':remark'=>$this->remark);
+        ':aantal_personen'=>$this->aantal_personen, ':remark'=>$this->remark, ':bevestigd'=>$bevestigd);
          
-        $sth = $this->pdo->prepare("INSERT INTO contact_reservering (naam, email, telefoonnummer, wandel_datum, aantal_personen, opmerking) VALUES
-        (:naam, :email, :phone, :wandel_datum, :aantal_personen, :remark)");
+        $sth = $this->pdo->prepare("INSERT INTO contact_reservering (naam, email, telefoonnummer, wandel_datum, aantal_personen, opmerking, bevestigd) VALUES
+        (:naam, :email, :phone, :wandel_datum, :aantal_personen, :remark, :bevestigd)");
 
         $sth->execute($parameters);
 
+        $this->update_capaciteit();
     }
 }
+
 
 ?>
