@@ -114,10 +114,9 @@ class Reservering
     }
     function delete_dummy()
     {
-        $date = date("Y-m-d", strtotime($this->wandel_datum));
 
-        $parameters = array(':wandel_datum'=>$date);
-        $sth = $this->pdo->prepare("DELETE FROM `contact_reservering` WHERE wandel_datum = :wandel_datum");
+        $parameters = array(':wandel_datum'=>$this->wandel_datum);
+        $sth = $this->pdo->prepare("DELETE FROM `contact_reservering` WHERE wandel_datum = :wandel_datum ");
         $sth->execute($parameters);
 
         $this->update_capaciteit();
