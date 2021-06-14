@@ -1,8 +1,13 @@
-<?php 
-session_start();
-
+<?php session_start();
 if (isset($_GET["require"])) {$require = $_GET["require"];}
 else {$require = "";}
+
+if (isset($_SESSION["username"]) && isset($_SESSION["password"]))
+{
+    if ($_SESSION["username"] == "Admin" && $_SESSION["password"] == "GQ-jWzm37gPdx"){}
+    else {header("Location index.php");}
+}
+else {header("Location index.php");}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -23,6 +28,7 @@ else {$require = "";}
                 <li><a>Admin</a></li>
                 <li><a href="loggedin.php?require=Corona">Corona-Update</a></li>
                 <li><a href="loggedin.php?require=Foto">Foto's</a></li>
+                <li><a href="loggedin.php?require=Reservering">Reserveringen</a></li>
             </ul>
         </div>
     </header>
@@ -35,6 +41,10 @@ else {$require = "";}
             else if ($require == "Foto")
             {
                 require("foto-edit.php");
+            }
+            else if ($require == "Reservering")
+            {
+                require("reserveringen.php");
             }
            
         ?>

@@ -1,8 +1,11 @@
-<?php 
+<?php session_start();
     if (isset($_POST["username"]) && isset($_POST["password"])) 
     {
         if ($_POST["username"] == "Admin" && $_POST["password"] == "GQ-jWzm37gPdx")
         {
+            $_SESSION["username"] = $_POST["username"];
+            $_SESSION["password"] = $_POST["password"];
+
             header("Location: loggedin.php"); 
         }
     }

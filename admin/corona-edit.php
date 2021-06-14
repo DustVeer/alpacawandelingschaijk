@@ -1,9 +1,5 @@
 <?php 
 require("../classes/Corona.php");
-if (!isset($_SESSION["admin"]))
-{
-    header("Location: login.php");
-}
 ?>
 <div class="form-divs">
     <div class="toevoeg-form-div">
