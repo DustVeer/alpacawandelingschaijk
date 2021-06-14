@@ -52,10 +52,10 @@ class Reservering
     {
         $this->datum = $value;
     }
-    
+
     private function update_capaciteit()
     {
-        $sth = $this->pdo->prepare("UPDATE capaciteit SET aantal_reserveringen = (SELECT SUM(contact_reservering.aantal_personen) FROM contact_reservering WHERE contact_reservering.wandel_datum = capaciteit.datum AND bevestigd = 1), aantal_beschikbaar = 8 - aantal_reserveringen");
+        $sth = $this->pdo->prepare("UPDATE `capaciteit` SET aantal_reserveringen = (SELECT COALESCE(SUM(contact_reservering.aantal_personen), 0) FROM `contact_reservering` WHERE contact_reservering.wandel_datum = capaciteit.datum AND contact_reservering.bevestigd = 1), aantal_beschikbaar = 8 - aantal_reserveringen");
         $sth->execute();
     }
 
@@ -117,7 +117,7 @@ class Reservering
         $date = date("Y-m-d", strtotime($this->wandel_datum));
 
         $parameters = array(':wandel_datum'=>$date);
-        $sth = $this->pdo->prepare("DELETE FROM contact_reservering WHERE wandel_datum = :wandel_datum");
+        $sth = $this->pdo->prepare("DELETE FROM `contact_reservering` WHERE wandel_datum = :wandel_datum");
         $sth->execute($parameters);
 
         $this->update_capaciteit();
