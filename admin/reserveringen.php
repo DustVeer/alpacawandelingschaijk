@@ -32,10 +32,16 @@ if (isset($_POST["bevestig"]))
     $reservering->change_bevestigd();
 }
 
-if (isset($_POST["date"]))
+if (isset($_POST["add_date"]))
 {
-    $reservering->set_datum($_POST["date"]);
+    $reservering->set_datum($_POST["add_date"]);
     $reservering->add_datum();
+}
+
+if (isset($_POST["delete_date"]))
+{
+    $reservering->set_datum($_POST["delete_date"]);
+    $reservering->delete_datum();
 }
 
 ?>
@@ -55,9 +61,15 @@ if (isset($_POST["date"]))
 </form>
 
 <form action="" method="POST">
-    <label for="date">Datum toevoegen</label>
-    <input class="form-input" type="date" name="date">
-    <input type="submit">
+    <label for="add_date">Datum toevoegen</label>
+    <input class="form-input" type="date" name="add_date">
+    <input type="submit" value="Voeg toe">
+</form>
+
+<form action="" method="POST">
+    <label for="delete_date">Datum Verwijderen</label>
+    <input class="form-input" type="date" name="delete_date">
+    <input style="background-color: rgb(134, 35, 35);" type="submit" value="Verwijder">
 </form>
 
 <form action="" method="POST">
@@ -119,7 +131,7 @@ if (isset($_POST["date"]))
     <tbody>
         <?php 
         
-        for ($j = 0; $j < count($array); $j++)
+        for ($j = 0; $j < min(count($array),40); $j++)
         {
             if (strtotime($array[$j][1]) > strtotime(date("Y-m-d")))
             {
@@ -128,10 +140,10 @@ if (isset($_POST["date"]))
                 $buttonFull = "<button class='table-button' onclick='window.location.href=\"loggedin.php?require=Reservering&aantal_beschikbaar=" .  $array[$j][2] . "&datum=".$array[$j][1]."\"'>Volle dag</button>";
 
                 //RED, BUTTON DISABLED
-                if ($array[$j][2] == 0) {$color = "rgb(134, 35, 35)"; $buttonFull = "";}
+                if ($array[$j][2] <= 1) {$color = "rgb(134, 35, 35)"; $buttonFull = "";}
 
                 //ORANGE
-                else if ($array[$j][2] <= 3) {$color = "rgb(255, 123, 0)";}
+                else if ($array[$j][2] == 2) {$color = "rgb(255, 123, 0)";}
 
                 //GREEN
                 else {$color = "var(--green1)";$buttonEmpty = "";}

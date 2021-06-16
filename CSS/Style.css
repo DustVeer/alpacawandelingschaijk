@@ -46,6 +46,7 @@ header > .content ul {
 header > .content li {
     display: flex;
     align-items: stretch;
+    white-space: nowrap;
 }
 li:hover {
     background-color: #3D8014;

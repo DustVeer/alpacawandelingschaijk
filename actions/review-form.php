@@ -15,6 +15,4 @@ if (strlen($_POST["name"]) <= 45)
 }
 header("Location: ../reviews.php");
 
-
-
 ?>

@@ -3,6 +3,26 @@
     padding: 0 10%;
     box-sizing: border-box;
 }
+.legenda-wraper {
+    display: flex;
+    flex-wrap: wrap;
+}
+.legenda-item {
+    display: flex;
+}
+.legenda-text {
+    margin-right: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+}
+.legenda-circle {
+    margin: 0 40px 10px 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 20px;
+    background-color: var(--green1);
+    border: 2px black solid;
+}
 .reservering {
     position: absolute;
     left: 25%;

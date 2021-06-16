@@ -1,12 +1,7 @@
 <?php 
 session_start();
-if (isset($_GET["error"]))
-{   $error = $_GET["error"]; }
-else { $error = null; }
-
-if (isset($_GET["succes"]))
-{ $succes =  $_GET["succes"];}
-else { $succes = null; }
+$error = (isset($_GET["error"])) ?  $error = $_GET["error"] : $error = null;
+$succes = (isset($_GET["succes"])) ? $succes =  $_GET["succes"] : $succes = null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +30,7 @@ else { $succes = null; }
                 <li><a href="activiteiten.php">Activiteiten</a></li>
                 <li><a href="reviews.php">Reviews</a></li>
                 <li><a href="contact.php" style="background-color: var(--green1);">Contact</a></li>
+                <!-- <li><a href="Reservering.php">Reservering</a></li> -->
                 <li><a href="fotos.php">Foto's</a></li>
                 <li><a href="corona-update.php">Corona update</a></li>
             </ul>
@@ -70,6 +66,7 @@ else { $succes = null; }
                 <div class="mid-form">
                     <form action="actions/contact-form.php" method="POST">
 
+                    
                     <!-- RADIOS -->
                     <div class="radios">
                         <label>Reservering:</label>
@@ -77,6 +74,7 @@ else { $succes = null; }
                         <label>Vraag:</label>
                         <input class="radio"  name="Reservation" value="Vraag" type="radio" onclick="DisplayRes(0)" <?php if ($error == "vraag") {echo "checked";} ?>>
                     </div>
+
 
                     <!-- NAAM -->
                     <label>Naam *</label><?php
@@ -88,19 +86,23 @@ else { $succes = null; }
                     <input class="form-input" value="<?php  
                     if (isset($_SESSION["name"]) && isset($error)) {echo $_SESSION["name"];} ?>" type="text" name="name" required>
 
+
                     <!-- TELEFOON NUMMERS -->
                     <label class="vraag">Telefoon nummer</label> 
                     <input class="form-input vraag" value="<?php  
                     if (isset($_SESSION["phone_vraag"]) && isset($error)) {echo $_SESSION["phone_vraag"];} ?>" type="number" name="phone_vraag">
+
 
                     <label class="reservering">Telefoon nummer *</label><?php if ($error == "phone") 
                     { echo "<p class='page-text' style='color:red;'>Voer een telefoon nummer in</p>"; } ?> 
                     <input class="form-input reservering" value="<?php  
                     if (isset($_SESSION["phone_reservering"]) && isset($error)) {echo $_SESSION["phone_reservering"];} ?>"  type="number" name="phone_reservering">
 
+
                     <!-- E-MAIL -->
                     <label>E-mail *</label>
                     <input class="form-input" value="<?php if (isset($_SESSION["email"]) && isset($error)) {echo $_SESSION["email"];} ?>" type="email" name="email" required>
+
 
                     <!-- VRAAG -->
                     <label class="vraag">Vraag *</label> <p class="vraag" style='font-family: Arial, Helvetica, sans-serif;'>Maximaal 5000 karakters</p>
@@ -109,11 +111,13 @@ else { $succes = null; }
                     <textarea class="form-questions vraag"  value="<?php  
                     if (isset($_SESSION["question"]) && isset($error)) {echo $_SESSION["question"];} ?>" name="question"></textarea>
 
+
                     <!-- DATUM -->
                     <label class="reservering">Datum van de wandeling *</label><?php if ($error == "date") 
                     { echo "<p class='page-text' style='color:red;'>Voer een datum in</p>"; } ?>
                     <input type="date" value="<?php  
                     if (isset($_SESSION["date"]) && isset($error)) {echo $_SESSION["date"];} ?>" name="date">
+
 
                     <!-- AANTAL PERSONEN -->
                     <label class="reservering">Aantal personen *</label><?php if ($error == "people") 
@@ -121,12 +125,11 @@ else { $succes = null; }
                     <input style="width: 10%;" value="<?php  
                     if (isset($_SESSION["number_people"]) && isset($error)) {echo $_SESSION["number_people"];} ?>" class="form-input reservering"  type="number" name="number_people" max="20" min="1">
                     
+
                     <!-- OPMERKINGEN -->
                     <label class="reservering">Opmerkingen</label> <p class="reservering" style='font-family: Arial, Helvetica, sans-serif;'>Maximaal 5000 karakters</p>
                     <textarea class="form-questions reservering" name="remark"><?php  
                     if (isset($_SESSION["remark"]) && isset($error)) {echo $_SESSION["remark"];} ?></textarea>
-                    
-
                     
 
                     <!-- SUBMIT -->

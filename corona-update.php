@@ -29,6 +29,7 @@ $row = (new Corona)->fetchAll();
                 <li><a href="activiteiten.php">Activiteiten</a></li>
                 <li><a href="reviews.php">Reviews</a></li>
                 <li><a href="contact.php">Contact</a></li>
+                <!-- <li><a href="Reservering.php">Reservering</a></li> -->
                 <li><a href="fotos.php">Foto's</a></li>
                 <li><a href="corona-update.php" style="background-color: var(--green1);">Corona update</a></li>
             </ul>

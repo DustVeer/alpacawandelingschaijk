@@ -121,6 +121,17 @@ class Reservering
 
         $this->update_capaciteit();
     }
+    function delete_datum()
+    {
+
+        $date = date("Y-m-d", strtotime($this->datum));
+
+        $parameters = array(':datum'=>$date);
+        $sth = $this->pdo->prepare("DELETE FROM `capaciteit` WHERE datum = :datum ");
+        $sth->execute($parameters);
+
+        $this->update_capaciteit();
+    }
     function add_datum()
     {
         $date = date("Y-m-d", strtotime($this->datum));

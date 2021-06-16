@@ -4,6 +4,9 @@
     <script src="JS/slide-show.js"></script>
     <link rel="stylesheet" href="CSS/Style.css">
     <link rel="stylesheet" href="CSS/Voorstellen.css">
+
+    <link rel="stylesheet" href="dist/css/bootstrap.min.css">
+    <script src="dist/js/bootstrap.bundle.js.map"></script>
     <title>AlpacaWandelingSchaijk</title>
     <link rel="icon" href="IMG/Alpaca_Logo.png" type="image/icon type">
     <link rel="icon" href="IMG/Alpaca_Logo.png" type="image/icon type">
@@ -26,14 +29,41 @@
                 <li><a href="activiteiten.php">Activiteiten</a></li>
                 <li><a href="reviews.php">Reviews</a></li>
                 <li><a href="contact.php">Contact</a></li>
+                <!-- <li><a href="Reservering.php">Reservering</a></li> -->
                 <li><a href="fotos.php">Foto's</a></li>
                 <li><a href="corona-update.php">Corona update</a></li>
             </ul>
         </div>
     </header>
     <div class="page-wrapper">
-        <div class="buttons-wrapper">
-            <button class="slide-button-left" onclick="plusDivs(-1)">&#10094;</button>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="IMG/Paloma.jpeg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="IMG/Pancho.jpeg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="IMG/Primero.jpeg" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+        <!-- <div class="buttons-wrapper"> -->
+            <!-- <button class="slide-button-left" onclick="plusDivs(-1)">&#10094;</button>
             <button class="slide-button-right" onclick="plusDivs(1)">&#10095;</button>
             <div class="slideshow-wrapper">
                 <img class="slides" src="IMG/Paloma.jpeg">
@@ -69,7 +99,7 @@
                         Ik ben de grootste alpaca van de kudde
                         Ik ben een echte knuffel. Ik hou ervan om heel dicht bij je te komen zodat je leuke foto's kunt maken.
                     </p>
-                </div>
+                </div> -->
 
 
                 
