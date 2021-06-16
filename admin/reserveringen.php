@@ -36,12 +36,16 @@ if (isset($_POST["add_date"]))
 {
     $reservering->set_datum($_POST["add_date"]);
     $reservering->add_datum();
+
+    $_POST["add_date"] = null;
 }
 
 if (isset($_POST["delete_date"]))
 {
     $reservering->set_datum($_POST["delete_date"]);
     $reservering->delete_datum();
+    
+    $_POST["delete_date"] = null;
 }
 
 ?>
