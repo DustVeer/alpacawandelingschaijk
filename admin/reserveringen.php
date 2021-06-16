@@ -11,7 +11,9 @@ if (isset($_GET["aantal_beschikbaar"]) && isset($_GET["datum"])&& $_GET["aantal_
     $reservering->set_aantal_personen($toInt);
 
     $reservering->add_dummy();
+
     header("Location: loggedin.php?require=Reservering");
+    exit;
 }
 else if (isset($_GET["remove_datum"]))
 {
